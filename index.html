@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Renaissance Art Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Welcome to the Renaissance Art Explorer</h1>
+  <p class="intro-text">Take a stroll through masterpieces from the likes of Michelangelo and da Vinci.</p>
+
+  <form id="search-form">
+    <input type="text" id="search-input" placeholder="Search by artist's name...">
+    <button type="submit"> Search</button>
+  </form>
+
+  <label for="period-filter">Filter by Year Range:</label>
+<select id="period-filter">
+  <option value="all">All</option>
+  <option value="1400-1450">1400 to 1450</option>
+  <option value="1451-1500">1451 to 1500</option>
+  <option value="1501-1550">1501 to 1550</option>
+</select>
+
+  <h2>Artworks</h2>
+  <div id="artwork-container" class="art-works">
+    <p class="loading-text">Loading masterpieces...</p>
+  </div>
+  <div id="lightbox">
+  <img src="" alt="Full Artwork">
+</div>
+
+
+  <h2>My Favorites Gallery</h2>
+  <div id="favorites-container" class="art-works">
+    <p class="loading-text">No favorites yet. Click "Save" on an artwork to keep it here!</p>
+  </div>
