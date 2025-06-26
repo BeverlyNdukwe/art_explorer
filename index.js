@@ -74,3 +74,39 @@ artworkContainer.addEventListener("click", e => {
       .then(art => {
         fetch("http://localhost:3000/favorites", {
           method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(art)
+        })
+          .then(() => {
+            loadFavorites();
+            alert("Added to your gallery!");
+          });
+      });
+  }
+});
+
+async function loadFavorites() {
+  try {
+    const res = await fetch("http://localhost:3000/favorites");
+    const data = await res.json();
+    favoritesContainer.innerHTML = "";
+    data.forEach(art => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h3>${art.title}</h3>
+        <p><em>${art.artist}</em> (${art.year})</p>
+        <img src="${art.image}" alt="${art.title}">
+      `;
+      favoritesContainer.appendChild(card);
+    });
+  } catch (err) {
+    favoritesContainer.innerHTML = '<p class="error-message">Failed to load favorites. </p>';
+    console.error(err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchArtworks();
+  loadFavorites();
+});
