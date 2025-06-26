@@ -75,3 +75,15 @@ button {
   font-size: 1.1rem;
   padding: 12px 24px;
   margin: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #8a2be2; /* Renaissance purple */
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #5d1ca3;
+  transform: scale(1.05);
+}
