@@ -52,7 +52,7 @@ document.getElementById("search-form").addEventListener("submit", async e => {
   }
 });
 
-ocument.getElementById("period-filter").addEventListener("change", async e => {
+document.getElementById("period-filter").addEventListener("change", async e => {
   const val = e.target.value;
   try {
     const res = await fetch("http://localhost:3000/artworks");
