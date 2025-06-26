@@ -51,3 +51,26 @@ document.getElementById("search-form").addEventListener("submit", async e => {
     console.error("Search failed:", err);
   }
 });
+
+ocument.getElementById("period-filter").addEventListener("change", async e => {
+  const val = e.target.value;
+  try {
+    const res = await fetch("http://localhost:3000/artworks");
+    const data = await res.json();
+    if (val === "all") return renderArtworks(data);
+    const [start, end] = val.split("-").map(Number);
+    const filtered = data.filter(a => a.year >= start && a.year <= end);
+    renderArtworks(filtered);
+  } catch (err) {
+    console.error("Filter failed:", err);
+  }
+});
+
+artworkContainer.addEventListener("click", e => {
+  if (e.target.classList.contains("save-btn")) {
+    const id = e.target.dataset.id;
+    fetch(`http://localhost:3000/artworks/${id}`)
+      .then(res => res.json())
+      .then(art => {
+        fetch("http://localhost:3000/favorites", {
+          method: "POST",
