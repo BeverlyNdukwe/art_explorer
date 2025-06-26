@@ -1,3 +1,4 @@
+const baseUrl = "https://json-server-bev.onrender.com/";
 const artworkContainer = document.getElementById("artwork-container");
 const favoritesContainer = document.getElementById("favorites-container");
 
